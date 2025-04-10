@@ -7,9 +7,10 @@
         "@root": "."
     },
     "scripts": {
-        "start": "nodemon src/index.ts",
+        "start": "node dist/src/index.js",
         "dev": "nodemon src/index.ts",
         "build": "tsc",
+        "heroku-postbuild": "prisma generate && tsc",
         "vercel-build": "prisma generate && tsc",
         "start:dist": "node dist/src/index.js",
         "typecheck": "tsc --noEmit",
