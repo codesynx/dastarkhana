@@ -7,7 +7,7 @@
         "@root": "."
     },
     "scripts": {
-        "start": "node dist/src/index.js",
+        "start": "nodemon src/index.ts",
         "dev": "nodemon src/index.ts",
         "build": "tsc",
         "vercel-build": "prisma generate && tsc",
@@ -39,6 +39,7 @@
         "netlify-cli": "^17.37.2",
         "netlify-lambda": "^2.0.16",
         "nodemailer": "^6.9.15",
+        "nodemon": "^3.1.5",
         "serverless-http": "^3.2.0",
         "swagger-jsdoc": "^6.2.8",
         "swagger-ui-express": "^5.0.1",
@@ -62,7 +63,6 @@
         "eslint-plugin-import": "^2.30.0",
         "globals": "^15.10.0",
         "jest": "^29.7.0",
-        "nodemon": "^3.1.5",
         "prettier": "^3.3.3",
         "prisma": "^5.20.0",
         "supertest": "^7.0.0",
