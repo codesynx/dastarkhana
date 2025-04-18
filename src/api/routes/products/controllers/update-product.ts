@@ -47,7 +47,7 @@ export async function updateProduct(req: Request, res: Response) {
             res.status(400).json({ error: error.message })
         } else {
             console.error(error)
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ error: "Ішкі сервер қатесі" })
         }
     }
 }

@@ -4,7 +4,7 @@ export async function deleteCustomer(req: Request, res: Response) {
     try {
         const id = Number(req.params.id);
         if (!id) {
-            throw new Error("Id must be a number");
+            throw new Error("Id сан түрінде болуы керек");
         }
         const deletedCustomer = await prisma.customer.delete({
             where: { id },

@@ -30,13 +30,13 @@ export async function registerDileveryMan(req: Request, res: Response) {
             res.status(400).json({ error: error.message });
         } else {
             console.error(error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({ error: "Ішкі сервер қатесі" });
         }
     }
 }
 const DileveryManSchema = z.object({
-    phone: z.string().min(1, "Phone number is required"),
+    phone: z.string().min(1, "Телефон нөмірі міндетті"),
     name: z.string().optional(),
-    salary: z.number().min(0,"Invalid Salary"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
+    salary: z.number().min(0,"Жалақы дұрыс емес"),
+    password: z.string().min(6, "Құпиясөз кемінде 6 таңбадан тұруы керек"),
 });

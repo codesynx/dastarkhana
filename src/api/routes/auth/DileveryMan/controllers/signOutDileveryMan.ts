@@ -8,7 +8,7 @@ export async function signOutDileveryMan(req: Request, res: Response) {
         const token = req.headers['authorization']?.split(' ')[1];
 
         if (!token) {
-            return res.status(400).json({ error: "No token provided" });
+            return res.status(400).json({ error: "Токен берілмеген" });
         }
 
         // Verify the token
@@ -20,13 +20,13 @@ export async function signOutDileveryMan(req: Request, res: Response) {
         });
 
         if (!dileveryMan) {
-            return res.status(404).json({ error: "Delivery man not found" });
+            return res.status(404).json({ error: "Курьер табылмады" });
         }
 
         // Clear the token or instruct the client to do so
         res.clearCookie("token"); // Optional: if using cookies
         res.status(200).json({
-            message: "Successfully logged out",
+            message: "Сәтті шықтыңыз",
             dileveryMan: {
                 id: dileveryMan.id,
                 name: dileveryMan.name,
@@ -39,12 +39,12 @@ export async function signOutDileveryMan(req: Request, res: Response) {
 
         // Handle specific JWT errors
         if (error.name === "JsonWebTokenError") {
-            return res.status(401).json({ error: "Invalid token" });
+            return res.status(401).json({ error: "Токен жарамсыз" });
         }
         if (error.name === "TokenExpiredError") {
-            return res.status(401).json({ error: "Token has expired" });
+            return res.status(401).json({ error: "Токеннің мерзімі өтіп кеткен" });
         }
 
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "Ішкі сервер қатесі" });
     }
 }

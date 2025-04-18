@@ -14,9 +14,9 @@ export async function deleteOrder(req: Request, res: Response) {
         });
 
     
-        res.status(200).json({ message: "Order deleted successfully", order: deletedOrder });
+        res.status(200).json({ message: "Тапсырыс сәтті өшірілді", order: deletedOrder });
     } catch (error) {
-        console.error("Error deleting order:", error);
+        console.error("Тапсырысты өшіру кезінде қате пайда болды:", error);
         res.status(500).json({ error: error.message });
     }
 }

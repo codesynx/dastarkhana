@@ -5,13 +5,13 @@ export async function deleteDeliveryMan(req: Request, res: Response) {
     try {
         const id = Number(req.params.id)
         if (isNaN(id)) {
-            return res.status(400).json({ message: "Id must be a valid number" })
+            return res.status(400).json({ message: "ID жарамды сан болуы керек" })
         }
         const deliveryMan = await prisma.dileveryMan.delete({
             where: { id },
         })
-        return res.status(200).json({ message: "DeliveryMan deleted successfully" })
+        return res.status(200).json({ message: "Курьер сәтті өшірілді" })
     } catch (error) {
-        return res.status(500).json({ message: "Error deleting DeliveryMan", error: error.message })
+        return res.status(500).json({ message: "Курьерді өшіру кезінде қате пайда болды", error: error.message })
     }
 }

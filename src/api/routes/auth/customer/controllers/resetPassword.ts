@@ -15,7 +15,7 @@ export async function resetPassword(req: Request, res: Response) {
     });
 
     if (!customer) {
-      return res.status(400).json({ error: "Email is incorrect" });
+      return res.status(400).json({ error: "Электрондық пошта дұрыс емес" });
     }
 
     if (
@@ -23,9 +23,9 @@ export async function resetPassword(req: Request, res: Response) {
       !customer.resetCodeExpiry ||
       new Date() > customer.resetCodeExpiry
     ) {
-      return res.status(400).json({ error: "Invalid or expired reset code" });
+      return res.status(400).json({ error: "Қалпына келтіру коды жарамсыз немесе мерзімі өтіп кеткен" });
     }
-    res.status(200).json({ message: "Code Valid" });
+    res.status(200).json({ message: "Код жарамды" });
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({
@@ -37,12 +37,12 @@ export async function resetPassword(req: Request, res: Response) {
       res.status(400).json({ error: error.message });
     } else {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Ішкі сервер қатесі" });
     }
   }
 }
 
 const ResetPasswordSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  code: z.string().min(4, "The reset code must be 4 digits").max(4, "The reset code must be 4 digits"),
+  email: z.string().email("Жарамсыз электрондық пошта"),
+  code: z.string().min(4, "Қалпына келтіру коды 4 саннан тұруы керек").max(4, "Қалпына келтіру коды 4 саннан тұруы керек"),
 });

@@ -5,24 +5,24 @@ const options: swaggerJSDoc.Options = {
   definition: {
     openapi: '3.0.1',
     info: {
-      title: 'delivery-food-mobile-app',
+      title: 'dastarkhana-backend',
       contact: {
-        name: 'Mehdi Ben Fekhta',
-        email: 'mehdi.benfekhta@gmail.com',
+        name: 'Abilmansur Omar',
+        email: 'omarabilmansur@gmail.com',
       },
       version: 'v1.0',
     },
     servers: [
       {
         url: 'http://localhost:8000/api',
-        description: 'Backend URL',
+        description: 'Бэкенд URL',
       },
     ],
     paths: {
       "/auth/register": {
         post: {
           tags: ['auth'],
-          summary: 'Register a new customer',
+          summary: 'Жаңа тұтынушыны тіркеу',
           requestBody: {
             required: true,
             content: {
@@ -34,14 +34,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Customer registered successfully' },
+            '200': { description: 'Тұтынушы сәтті тіркелді' },
           },
         },
       },
       "/auth/registerDeliveryMan": {
         post: {
           tags: ['auth'],
-          summary: 'Register a new delivery man',
+          summary: 'Жаңа жеткізуші қызметкерді тіркеу',
           requestBody: {
             required: true,
             content: {
@@ -53,14 +53,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Delivery man registered successfully' },
+            '200': { description: 'Жеткізуші қызметкер сәтті тіркелді' },
           },
         },
       },
       "/auth/login": {
         post: {
           tags: ['auth'],
-          summary: 'Login a customer',
+          summary: 'Тұтынушы ретінде кіру',
           requestBody: {
             required: true,
             content: {
@@ -76,14 +76,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Customer logged in successfully' },
+            '200': { description: 'Тұтынушы сәтті кірді' },
           },
         },
       },
       "/auth/loginAdmin": {
         post: {
           tags: ['auth'],
-          summary: 'Login an admin',
+          summary: 'Әкімші ретінде кіру',
           requestBody: {
             required: true,
             content: {
@@ -99,14 +99,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Admin logged in successfully' },
+            '200': { description: 'Әкімші сәтті кірді' },
           },
         },
       },
       "/auth/loginDeliveryMan": {
         post: {
           tags: ['auth'],
-          summary: 'Login a delivery man',
+          summary: 'Жеткізуші қызметкер ретінде кіру',
           requestBody: {
             required: true,
             content: {
@@ -122,17 +122,17 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Delivery man logged in successfully' },
+            '200': { description: 'Жеткізуші қызметкер сәтті кірді' },
           },
         },
       },
       "/auth/customers": {
         get: {
           tags: ['customers'],
-          summary: 'Get all customers',
+          summary: 'Барлық тұтынушыларды алу',
           responses: {
             '200': {
-              description: 'List of all customers',
+              description: 'Барлық тұтынушылардың тізімі',
               content: {
                 'application/json': {
                   schema: {
@@ -150,7 +150,7 @@ const options: swaggerJSDoc.Options = {
       "/auth/customer/{id}": {
         get: {
           tags: ['customers'],
-          summary: 'Get a customer by ID',
+          summary: 'ID бойынша тұтынушыны алу',
           parameters: [
             {
               name: 'id',
@@ -163,13 +163,13 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Customer found' },
-            '404': { description: 'Customer not found' },
+            '200': { description: 'Тұтынушы табылды' },
+            '404': { description: 'Тұтынушы табылмады' },
           },
         },
         put: {
           tags: ['customers'],
-          summary: 'Update a customer',
+          summary: 'Тұтынушыны жаңарту',
           parameters: [
             {
               name: 'id',
@@ -192,12 +192,12 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Customer updated successfully' },
+            '200': { description: 'Тұтынушы сәтті жаңартылды' },
           },
         },
         delete: {
           tags: ['customers'],
-          summary: 'Delete a customer',
+          summary: 'Тұтынушыны жою',
           parameters: [
             {
               name: 'id',
@@ -210,18 +210,18 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Customer deleted successfully' },
-            '404': { description: 'Customer not found' },
+            '200': { description: 'Тұтынушы сәтті жойылды' },
+            '404': { description: 'Тұтынушы табылмады' },
           },
         },
       },
       "/auth/DeliveryMan": {
         get: {
           tags: ['DeliveryMans'],
-          summary: 'Get all DeliveryMans',
+          summary: 'Барлық жеткізуші қызметкерлерді алу',
           responses: {
             '200': {
-              description: 'List of all DeliveryMans',
+              description: 'Барлық жеткізуші қызметкерлердің тізімі',
               content: {
                 'application/json': {
                   schema: {
@@ -239,7 +239,7 @@ const options: swaggerJSDoc.Options = {
       "/auth/DeliveryMan/{id}": {
         get: {
           tags: ['DeliveryMans'],
-          summary: 'Get a DeliveryMan by ID',
+          summary: 'ID бойынша жеткізуші қызметкерді алу',
           parameters: [
             {
               name: 'id',
@@ -252,13 +252,13 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'DeliveryMan found' },
-            '404': { description: 'DeliveryMan not found' },
+            '200': { description: 'Жеткізуші қызметкер табылды' },
+            '404': { description: 'Жеткізуші қызметкер табылмады' },
           },
         },
         put: {
           tags: ['DeliveryMans'],
-          summary: 'Update a DeliveryMan',
+          summary: 'Жеткізуші қызметкерді жаңарту',
           parameters: [
             {
               name: 'id',
@@ -281,12 +281,12 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'DeliveryMan updated successfully' },
+            '200': { description: 'Жеткізуші қызметкер сәтті жаңартылды' },
           },
         },
         delete: {
           tags: ['DeliveryMans'],
-          summary: 'Delete a DeliveryMan',
+          summary: 'Жеткізуші қызметкерді жою',
           parameters: [
             {
               name: 'id',
@@ -299,18 +299,18 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'DeliveryMan deleted successfully' },
-            '404': { description: 'DeliveryMan not found' },
+            '200': { description: 'Жеткізуші қызметкер сәтті жойылды' },
+            '404': { description: 'Жеткізуші қызметкер табылмады' },
           },
         },
       },
       "/products": { 
         get: {
           tags: ['products'],
-          summary: 'Get all products',
+          summary: 'Барлық өнімдерді алу',
           responses: {
             '200': {
-              description: 'List of all products',
+              description: 'Барлық өнімдердің тізімі',
               content: {
                 'application/json': {
                   schema: {
@@ -326,7 +326,7 @@ const options: swaggerJSDoc.Options = {
         },
         post: {
           tags: ['products'],
-          summary: 'Create a new product',
+          summary: 'Жаңа өнім құру',
           requestBody: {
             required: true,
             content: {
@@ -338,14 +338,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '201': { description: 'Product created successfully' },
+            '201': { description: 'Өнім сәтті құрылды' },
           },
         },
       },
       "/products/{id}": {
         get: {
           tags: ['products'],
-          summary: 'Get a product by ID',
+          summary: 'ID бойынша өнімді алу',
           parameters: [
             {
               name: 'id',
@@ -358,13 +358,13 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Product found' },
-            '404': { description: 'Product not found' },
+            '200': { description: 'Өнім табылды' },
+            '404': { description: 'Өнім табылмады' },
           },
         },
         put: {
           tags: ['products'],
-          summary: 'Update a product',
+          summary: 'Өнімді жаңарту',
           parameters: [
             {
               name: 'id',
@@ -387,12 +387,12 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Product updated successfully' },
+            '200': { description: 'Өнім сәтті жаңартылды' },
           },
         },
         delete: {
           tags: ['products'],
-          summary: 'Delete a product',
+          summary: 'Өнімді жою',
           parameters: [
             {
               name: 'id',
@@ -405,18 +405,18 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Product deleted successfully' },
-            '404': { description: 'Product not found' },
+            '200': { description: 'Өнім сәтті жойылды' },
+            '404': { description: 'Өнім табылмады' },
           },
         },
       },
       "/categories": {
         get: {
           tags: ['categories'],
-          summary: 'Get all categories',
+          summary: 'Барлық санаттарды алу',
           responses: {
             '200': {
-              description: 'List of all categories',
+              description: 'Барлық санаттардың тізімі',
               content: {
                 'application/json': {
                   schema: {
@@ -432,7 +432,7 @@ const options: swaggerJSDoc.Options = {
         },
         post: {
           tags: ['categories'],
-          summary: 'Create a new category',
+          summary: 'Жаңа санат құру',
           requestBody: {
             required: true,
             content: {
@@ -444,17 +444,17 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '201': { description: 'Category created successfully' },
+            '201': { description: 'Санат сәтті құрылды' },
           },
         },
       },
       "/orders": {
         get: {
           tags: ['orders'],
-          summary: 'Get all orders',
+          summary: 'Барлық тапсырыстарды алу',
           responses: {
             '200': {
-              description: 'List of all orders',
+              description: 'Барлық тапсырыстардың тізімі',
               content: {
                 'application/json': {
                   schema: {
@@ -470,7 +470,7 @@ const options: swaggerJSDoc.Options = {
         },
         post: {
           tags: ['orders'],
-          summary: 'Create a new order',
+          summary: 'Жаңа тапсырыс құру',
           requestBody: {
             required: true,
             content: {
@@ -482,14 +482,14 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '201': { description: 'Order created successfully' },
+            '201': { description: 'Тапсырыс сәтті құрылды' },
           },
         },
       },
       "/orders/customer/{customerId}": {
         get: {
           tags: ['orders'],
-          summary: 'Get all orders by customer ID',
+          summary: 'Тұтынушы ID бойынша барлық тапсырыстарды алу',
           parameters: [
             {
               name: 'customerId',
@@ -503,7 +503,7 @@ const options: swaggerJSDoc.Options = {
           ],
           responses: {
             '200': {
-              description: 'Orders retrieved successfully',
+              description: 'Тапсырыстар сәтті алынды',
               content: {
                 'application/json': {
                   schema: {
@@ -516,10 +516,10 @@ const options: swaggerJSDoc.Options = {
               },
             },
             '404': {
-              description: 'No orders found for this customer',
+              description: 'Бұл тұтынушы үшін тапсырыстар табылмады',
             },
             '500': {
-              description: 'Internal server error',
+              description: 'Сервер қатесі',
             },
           },
         },
@@ -527,7 +527,7 @@ const options: swaggerJSDoc.Options = {
       "/orders/{id}": {
         get: {
           tags: ['orders'],
-          summary: 'Get an order by ID',
+          summary: 'ID бойынша тапсырысты алу',
           parameters: [
             {
               name: 'id',
@@ -540,13 +540,13 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Order found' },
-            '404': { description: 'Order not found' },
+            '200': { description: 'Тапсырыс табылды' },
+            '404': { description: 'Тапсырыс табылмады' },
           },
         },
         put: {
           tags: ['orders'],
-          summary: 'Update an order',
+          summary: 'Тапсырысты жаңарту',
           parameters: [
             {
               name: 'id',
@@ -569,12 +569,12 @@ const options: swaggerJSDoc.Options = {
             },
           },
           responses: {
-            '200': { description: 'Order updated successfully' },
+            '200': { description: 'Тапсырыс сәтті жаңартылды' },
           },
         },
         delete: {
           tags: ['orders'],
-          summary: 'Delete an order',
+          summary: 'Тапсырысты жою',
           parameters: [
             {
               name: 'id',
@@ -587,8 +587,8 @@ const options: swaggerJSDoc.Options = {
             },
           ],
           responses: {
-            '200': { description: 'Order deleted successfully' },
-            '404': { description: 'Order not found' },
+            '200': { description: 'Тапсырыс сәтті жойылды' },
+            '404': { description: 'Тапсырыс табылмады' },
           },
         },
       },

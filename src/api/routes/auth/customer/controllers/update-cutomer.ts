@@ -6,7 +6,7 @@ export async function updateCustomer(req: Request, res: Response) {
     try {
         const id = Number(req.params.id);
         if (isNaN(id)) {
-            return res.status(400).json({ message: "Id must be a valid number" });
+            return res.status(400).json({ message: "ID жарамды сан болуы керек" });
         }
 
         const { name, email, phone, password } = req.body;
@@ -24,6 +24,6 @@ export async function updateCustomer(req: Request, res: Response) {
 
         return res.status(200).json(customer);
     } catch (error) {
-        return res.status(500).json({ message: "Error updating Customer", error: error.message });
+        return res.status(500).json({ message: "Тапсырыс берушіні жаңарту қатесі", error: error.message });
     }
 }

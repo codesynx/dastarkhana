@@ -30,13 +30,13 @@ export async function registerCustomer(req: Request, res: Response) {
             res.status(400).json({ error: error.message });
         } else {
             console.error(error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({ error: "Ішкі сервер қатесі" });
         }
     }
 }
 const CustomerSchema = z.object({
-    phone: z.string().min(1, "Phone number is required"),
+    phone: z.string().min(1, "Телефон нөмірі міндетті"),
     name: z.string().optional(),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
+    email: z.string().email("Жарамсыз электрондық пошта"),
+    password: z.string().min(6, "Құпиясөз кемінде 6 таңбадан тұруы керек"),
 });

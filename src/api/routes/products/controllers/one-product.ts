@@ -5,7 +5,7 @@ export async function getOneProduct(req: Request, res: Response) {
     try {
         const id = Number(req.params.id)
         if (!id) {
-            throw new Error("Id must be a number")
+            throw new Error("Id сан түрінде болуы керек")
         }
         const product = await prisma.product.findFirst({
             where: {
@@ -17,7 +17,7 @@ export async function getOneProduct(req: Request, res: Response) {
         })
         return product
             ? res.send(product)
-            : res.status(404).json({ message: "not found" })
+            : res.status(404).json({ message: "Табылмады" })
     } catch (error) {
         throw new Error(error)
     }

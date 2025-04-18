@@ -19,8 +19,8 @@ async function updatePassword(email: string, newPassword: string) {
 
 export async function changePassword(req: Request, res: Response) {
   const ChangePasswordSchema = z.object({
-    email: z.string().email("Invalid email address"),
-    newPassword: z.string().min(6, "The new password must be at least 6 characters long"),
+    email: z.string().email("Жарамсыз электрондық пошта"),
+    newPassword: z.string().min(6, "Жаңа құпиясөз кемінде 6 таңбадан тұруы керек"),
   });
 
   try {
@@ -31,12 +31,12 @@ export async function changePassword(req: Request, res: Response) {
     });
 
     if (!customer) {
-      return res.status(404).json({ error: "Customer not found" });
+      return res.status(404).json({ error: "Тапсырыс беруші табылмады" });
     }
 
     await updatePassword(email, newPassword);
     
-    res.status(200).json({ message: "Password has been changed successfully" });
+    res.status(200).json({ message: "Құпиясөз сәтті өзгертілді" });
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({
@@ -48,7 +48,7 @@ export async function changePassword(req: Request, res: Response) {
       res.status(400).json({ error: error.message });
     } else {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: "Ішкі сервер қатесі" });
     }
   }
 }

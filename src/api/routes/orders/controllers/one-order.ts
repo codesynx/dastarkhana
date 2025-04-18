@@ -17,7 +17,7 @@ export async function getOrderById(req: Request, res: Response) {
             },
         })
         if (!order) {
-            return res.status(404).json({ error: "Order not found" })
+            return res.status(404).json({ error: "Тапсырыс табылмады" })
         }
         res.json(order)
     } catch (error) {

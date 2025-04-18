@@ -35,27 +35,27 @@ async function main() {
 
         form.parse(req, async (err, fields, files) => {
             if (err) {
-                console.error("Error parsing form data:", err)
+                console.error("Форма деректерін талдау қатесі:", err)
                 return res
                     .status(500)
-                    .json({ error: "Error parsing form data" })
+                    .json({ error: "Форма деректерін талдау қатесі" })
             }
 
             try {
-                console.log("Uploading image...")
+                console.log("Сурет жүктелуде...")
 
                 const file = files.image?.[0]
                 if (!file) {
-                    return res.status(400).json({ error: "No file uploaded" })
+                    return res.status(400).json({ error: "Ешқандай файл жүктелмеді" })
                 }
 
                 // Upload the file to Cloudinary
                 const result = await cloudinary.uploader.upload(file.path)
 
-                console.log("Image uploaded successfully:", result)
+                console.log("Сурет сәтті жүктелді:", result)
                 res.json(result)
             } catch (error) {
-                console.error("Image upload failed:", error)
+                console.error("Суретті жүктеу сәтсіз аяқталды:", error)
                 res.status(500).send(error)
             }
         })

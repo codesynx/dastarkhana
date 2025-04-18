@@ -14,7 +14,7 @@ export const getOrdersCount = async (req: Request, res: Response) => {
 
         res.json({ deliveryManId: id, ordersCount });
     } catch (error) {
-        res.status(500).json({ error: 'An error occurred while fetching orders count.' });
+        res.status(500).json({ error: 'Тапсырыстар санын алу кезінде қате пайда болды.' });
     }
 };
 
@@ -57,6 +57,6 @@ export const getOrdersSummary = async (req: Request, res: Response) => {
             totalPrice: totalPrice._sum.totalPrice || 0,
         });
     } catch (error) {
-        res.status(500).json({ error: 'An error occurred while fetching orders summary.' });
+        res.status(500).json({ error: 'Тапсырыстардың есебін алу кезінде қате пайда болды.' });
     }
 };

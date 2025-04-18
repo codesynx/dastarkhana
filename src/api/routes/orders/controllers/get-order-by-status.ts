@@ -7,7 +7,7 @@ export const getOrdersByStatus = async (req: Request, res: Response) => {
   const { status } = req.params;
 
   if (!Object.values(Status).includes(status as Status)) {
-    return res.status(400).json({ error: "Invalid status parameter" });
+    return res.status(400).json({ error: "Статус параметрі жарамсыз" });
   }
 
   try {
@@ -28,8 +28,8 @@ export const getOrdersByStatus = async (req: Request, res: Response) => {
 
     res.json(orders);
   } catch (error) {
-    console.error("Error fetching orders by status:", error);
-    res.status(500).json({ error: "Error fetching orders by status" });
+    console.error("Статус бойынша тапсырыстарды алу кезінде қате шықты:", error);
+    res.status(500).json({ error: "Статус бойынша тапсырыстарды алу кезінде қате шықты" });
   } finally {
     await prisma.$disconnect();
   }

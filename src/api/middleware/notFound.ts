@@ -2,7 +2,7 @@
 function notFound(req, res, next) {
     res.status(404)
     res.json({
-        message: "not found",
+        message: "ештеңе табылмады",
     })
 }
 

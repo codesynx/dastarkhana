@@ -12,7 +12,7 @@ export async function sendEmail(req: Request, res: Response) {
         })
 
         if (!customer) {
-            return res.status(400).json({ error: "Email is incorrect" })
+            return res.status(400).json({ error: "Электрондық пошта дұрыс емес" })
         } else {
             const verificationCode = Math.floor(1000 + Math.random() * 9000)
             const expiryTime = new Date(Date.now() + 15 * 60 * 1000)
@@ -36,19 +36,19 @@ export async function sendEmail(req: Request, res: Response) {
             const mailOptions = {
                 from: process.env.EMAIL_USER,
                 to: customer.email,
-                subject: "Reset Password",
+                subject: "Құпиясөзді қалпына келтіру",
                 html: `<div><h4>${verificationCode}</h4></div>`,
             }
 
             try {
                 const info = await transporter.sendMail(mailOptions)
-                console.log("Email sent: " + info.response)
+                console.log("Электрондық хат жіберілді: " + info.response)
             } catch (err) {
-                console.error("Error sending email:", err)
-                return res.status(500).json({ error: "Failed to send email" })
+                console.error("Электрондық хат жіберу қатесі:", err)
+                return res.status(500).json({ error: "Электрондық хат жіберілмеді" })
             }
         }
-        res.status(200).json({ res: "User found and reset code sent" })
+        res.status(200).json({ res: "Пайдаланушы табылды, қалпына келтіру коды жіберілді" })
     } catch (error) {
         if (error instanceof z.ZodError) {
             res.status(400).json({
@@ -60,11 +60,11 @@ export async function sendEmail(req: Request, res: Response) {
             res.status(400).json({ error: error.message })
         } else {
             console.error(error)
-            res.status(500).json({ error: "Internal server error" })
+            res.status(500).json({ error: "Ішкі сервер қатесі" })
         }
     }
 }
 
 const LoginSchema = z.object({
-    email: z.string().email("Invalid email address"),
+    email: z.string().email("Жарамсыз электрондық пошта"),
 })

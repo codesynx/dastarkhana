@@ -13,11 +13,11 @@ export async function loginDileveryMan(req: Request, res: Response) {
         });
 
         if (!DileveryMan) {
-            return res.status(400).json({ error: "Phone number or password is incorrect" });
+            return res.status(400).json({ error: "Телефон нөмірі немесе құпиясөз қате" });
         }
         const isPasswordValid = await bcrypt.compare(password, DileveryMan.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ error: "Phone number or password is incorrect" });
+            return res.status(400).json({ error: "Телефон нөмірі немесе құпиясөз қате" });
         }
         const token = jwt.sign({ id: DileveryMan.id }, process.env.JWT_SECRET || "secretKey", {
             expiresIn: "1h",
@@ -35,11 +35,11 @@ export async function loginDileveryMan(req: Request, res: Response) {
             res.status(400).json({ error: error.message });
         } else {
             console.error(error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({ error: "Ішкі сервер қатесі" });
         }
     }
 }
 const LoginSchema = z.object({
-    phone: z.string().min(1, "Phone number is required"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
+    phone: z.string().min(1, "Телефон нөмірі міндетті"),
+    password: z.string().min(6, "Құпиясөз кемінде 6 таңбадан тұруы керек"),
 });

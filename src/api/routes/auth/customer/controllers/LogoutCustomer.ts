@@ -7,7 +7,7 @@ export async function signOut(req: Request, res: Response) {
         const token = req.headers['authorization']?.split(' ')[1];
 
         if (!token) {
-            return res.status(400).json({ error: "No token provided" });
+            return res.status(400).json({ error: "Токен берілмеген" });
         }
 
         const decoded: any = jwt.verify(token, process.env.JWT_SECRET || "secretKey");
@@ -17,11 +17,11 @@ export async function signOut(req: Request, res: Response) {
         });
 
         if (!user) {
-            return res.status(404).json({ error: "User not found" });
+            return res.status(404).json({ error: "Пайдаланушы табылмады" });
         }
 
         res.status(200).json({
-            message: "Successfully logged out",
+            message: "Сәтті шықтыңыз",
             user: {
                 id: user.id,
                 name: user.name,
@@ -35,12 +35,12 @@ export async function signOut(req: Request, res: Response) {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error: "Ішкі сервер қатесі" });
     }
 }
 exports.signout = (req, res) => {
     res.clearCookie("token");
     res.json({
-        message: "User has signed out"
+        message: "Пайдаланушы жүйеден шықты"
     });
 };

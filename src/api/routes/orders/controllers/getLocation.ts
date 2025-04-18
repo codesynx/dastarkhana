@@ -8,14 +8,14 @@ export async function getLocation(req: Request, res: Response) {
         const longitude = Number(long)
 
         if (isNaN(latitude) || isNaN(longitude)) {
-            res.status(400).json({ error: "long or lat param is missing" })
+            res.status(400).json({ error: "Ұзындық немесе ендік параметрі жоқ" })
         }
 
         const address = getAddressFromLatLng(latitude, longitude)
 
         res.json({ address })
     } catch (error) {
-        res.status(500).json({ error: "something bad happened" })
+        res.status(500).json({ error: "Белгісіз қате орын алды" })
     }
 }
 
@@ -30,9 +30,9 @@ async function getAddressFromLatLng(lat, lng) {
             const address = data.display_name
             return address
         } else {
-            console.error("Error in reverse geocoding: ", data)
+            console.error("Геолокацияны анықтау қатесі: ", data)
         }
     } catch (error) {
-        console.error("Error with reverse geocoding request:", error)
+        console.error("Геолокация сұрауында қате бар:", error)
     }
 }

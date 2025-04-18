@@ -25,7 +25,7 @@ orderRouter.get("/orders/deliveryMan/:deliveryManId", getOrdersByDeliveryManId);
 
 // Gestion des routes non trouvées
 orderRouter.use((req, res) => {
-  res.status(404).json({ message: "Route not found" });
+  res.status(404).json({ message: "Маршрут табылмады" });
 });
 
 export default orderRouter;

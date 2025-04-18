@@ -8,7 +8,7 @@ export const getOrdersByDeliveryManId = async (req: Request, res: Response) => {
 
   // Vérifier si deliveryManId est valide
   if (!deliveryManId) {
-    return res.status(400).json({ error: "DeliveryMan ID is required" });
+    return res.status(400).json({ error: "Курьер ID-сы міндетті" });
   }
 
   try {
@@ -30,8 +30,8 @@ export const getOrdersByDeliveryManId = async (req: Request, res: Response) => {
 
     res.json(orders);
   } catch (error) {
-    console.error("Error fetching orders by deliveryManId:", error);
-    res.status(500).json({ error: "Error fetching orders by deliveryManId" });
+    console.error("Курьер ID-сы бойынша тапсырыстарды алу кезінде қате шықты:", error);
+    res.status(500).json({ error: "Курьер ID-сы бойынша тапсырыстарды алу кезінде қате шықты" });
   } finally {
     await prisma.$disconnect();
   }

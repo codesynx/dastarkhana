@@ -8,7 +8,7 @@ export async function updateOrderStatus(req: Request, res: Response) {
         const { status } = req.body
         if (!ALL_ORDER_STATUS.includes(status)) {
             return res.status(400).send({
-                error: "status is not valid",
+                error: "Статус жарамсыз",
             })
         }
 
