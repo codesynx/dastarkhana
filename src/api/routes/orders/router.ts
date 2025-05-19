@@ -8,7 +8,7 @@ import { getLocation } from "./controllers/getLocation";
 import { getOrderUserId } from "./controllers/getOrderUserId";
 import { updateOrderStatus } from "./controllers/update-order-status";
 import { getOrdersByStatus } from "./controllers/get-order-by-status";
-import { getOrdersByDeliveryManId } from "./controllers/get-ordre-By-deliveryManId";
+import { getOrdersByDeliveryManId } from "./controllers/get-order-By-deliveryManId";
 
 const orderRouter = express.Router();
 
