@@ -5,21 +5,21 @@ import { z } from "zod";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export async function loginDileveryMan(req: Request, res: Response) {
+export async function loginDeliveryMan(req: Request, res: Response) {
     try {
         const { phone, password } = LoginSchema.parse(req.body);
-        const DileveryMan = await prisma.dileveryMan.findUnique({
+        const DeliveryMan = await prisma.deliveryMan.findUnique({
             where: { phone },
         });
 
-        if (!DileveryMan) {
+        if (!DeliveryMan) {
             return res.status(400).json({ error: "Телефон нөмірі немесе құпиясөз қате" });
         }
-        const isPasswordValid = await bcrypt.compare(password, DileveryMan.password);
+        const isPasswordValid = await bcrypt.compare(password, DeliveryMan.password);
         if (!isPasswordValid) {
             return res.status(400).json({ error: "Телефон нөмірі немесе құпиясөз қате" });
         }
-        const token = jwt.sign({ id: DileveryMan.id }, process.env.JWT_SECRET || "secretKey", {
+        const token = jwt.sign({ id: DeliveryMan.id }, process.env.JWT_SECRET || "secretKey", {
             expiresIn: "1h",
         });
 

@@ -27,7 +27,7 @@ CREATE TABLE "Customer" (
 );
 
 -- CreateTable
-CREATE TABLE "DileveryMan" (
+CREATE TABLE "DeliveryMan" (
     "id" SERIAL NOT NULL,
     "phone" TEXT NOT NULL,
     "name" TEXT DEFAULT '',
@@ -36,7 +36,7 @@ CREATE TABLE "DileveryMan" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "DileveryMan_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "DeliveryMan_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -96,7 +96,7 @@ CREATE UNIQUE INDEX "Admin_phone_key" ON "Admin"("phone");
 CREATE UNIQUE INDEX "Customer_phone_key" ON "Customer"("phone");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "DileveryMan_phone_key" ON "DileveryMan"("phone");
+CREATE UNIQUE INDEX "DeliveryMan_phone_key" ON "DeliveryMan"("phone");
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -105,7 +105,7 @@ ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("cat
 ALTER TABLE "Order" ADD CONSTRAINT "Order_customerId_fkey" FOREIGN KEY ("customerId") REFERENCES "Customer"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Order" ADD CONSTRAINT "Order_deliveryManId_fkey" FOREIGN KEY ("deliveryManId") REFERENCES "DileveryMan"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Order" ADD CONSTRAINT "Order_deliveryManId_fkey" FOREIGN KEY ("deliveryManId") REFERENCES "DeliveryMan"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "OrderItem" ADD CONSTRAINT "OrderItem_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

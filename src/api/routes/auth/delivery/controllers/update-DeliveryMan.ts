@@ -6,7 +6,7 @@ export async function updateDeliveryMan(req: Request, res: Response) {
         if (!id) {
             throw new Error("ID сан түрінде болуы керек");
         }
-        const updatedDeliveryMan = await prisma.dileveryMan.update({
+        const updatedDeliveryMan = await prisma.deliveryMan.update({
             where: { id },
             data: req.body,
         });

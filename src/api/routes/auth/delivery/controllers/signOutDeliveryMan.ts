@@ -2,7 +2,7 @@ import { prisma } from "@root/prisma/prisma";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-export async function signOutDileveryMan(req: Request, res: Response) {
+export async function signOutDeliveryMan(req: Request, res: Response) {
     try {
         // Extract the token from the authorization header
         const token = req.headers['authorization']?.split(' ')[1];
@@ -15,11 +15,11 @@ export async function signOutDileveryMan(req: Request, res: Response) {
         const decoded: any = jwt.verify(token, process.env.JWT_SECRET || "secretKey");
 
         // Find the delivery man using the decoded token's ID
-        const dileveryMan = await prisma.dileveryMan.findUnique({
+        const DeliveryMan = await prisma.deliveryMan.findUnique({
             where: { id: decoded.id },
         });
 
-        if (!dileveryMan) {
+        if (!DeliveryMan) {
             return res.status(404).json({ error: "Курьер табылмады" });
         }
 
@@ -27,11 +27,11 @@ export async function signOutDileveryMan(req: Request, res: Response) {
         res.clearCookie("token"); // Optional: if using cookies
         res.status(200).json({
             message: "Сәтті шықтыңыз",
-            dileveryMan: {
-                id: dileveryMan.id,
-                name: dileveryMan.name,
-                phone: dileveryMan.phone,
-                createdAt: dileveryMan.createdAt,
+            DeliveryMan: {
+                id: DeliveryMan.id,
+                name: DeliveryMan.name,
+                phone: DeliveryMan.phone,
+                createdAt: DeliveryMan.createdAt,
             },
         });
     } catch (error) {

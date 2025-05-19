@@ -28,7 +28,7 @@ model Customer {
   orders Order[]
 }
 
-model DileveryMan{
+model DeliveryMan{
   id    Int     @id @default(autoincrement())
   phone String  @unique
   name  String?  @default("")
@@ -81,7 +81,7 @@ model Order {
   customerId Int
   customer Customer  @relation(fields: [customerId], references: [id])
   deliveryManId Int?
-  deliveryMan DileveryMan?  @relation(fields: [deliveryManId], references: [id])
+  deliveryMan DeliveryMan?  @relation(fields: [deliveryManId], references: [id])
   createdAt DateTime   @default(now())
 
 }

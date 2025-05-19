@@ -7,7 +7,7 @@ export async function deleteDeliveryMan(req: Request, res: Response) {
         if (isNaN(id)) {
             return res.status(400).json({ message: "ID жарамды сан болуы керек" })
         }
-        const deliveryMan = await prisma.dileveryMan.delete({
+        const deliveryMan = await prisma.deliveryMan.delete({
             where: { id },
         })
         return res.status(200).json({ message: "Курьер сәтті өшірілді" })

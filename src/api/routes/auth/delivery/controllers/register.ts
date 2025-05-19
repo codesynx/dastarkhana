@@ -4,12 +4,12 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 
-export async function registerDileveryMan(req: Request, res: Response) {
+export async function registerDeliveryMan(req: Request, res: Response) {
     try {
-        const { phone, name,salary, password } = DileveryManSchema.parse(req.body);
+        const { phone, name,salary, password } = DeliveryManSchema.parse(req.body);
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const DileveryMan = await prisma.dileveryMan.create({
+        const DeliveryMan = await prisma.deliveryMan.create({
             data: {
                 phone,
                 name,
@@ -18,7 +18,7 @@ export async function registerDileveryMan(req: Request, res: Response) {
             },
         });
 
-        res.status(201).json(DileveryMan);
+        res.status(201).json(DeliveryMan);
     } catch (error) {
         if (error instanceof z.ZodError) {
             res.status(400).json({
@@ -34,7 +34,7 @@ export async function registerDileveryMan(req: Request, res: Response) {
         }
     }
 }
-const DileveryManSchema = z.object({
+const DeliveryManSchema = z.object({
     phone: z.string().min(1, "Телефон нөмірі міндетті"),
     name: z.string().optional(),
     salary: z.number().min(0,"Жалақы дұрыс емес"),

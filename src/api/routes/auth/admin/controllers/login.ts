@@ -19,11 +19,19 @@ export async function loginadmin(req: Request, res: Response) {
         if (!isPasswordValid) {
             return res.status(400).json({ error: "Құпиясөз қате" });
         }
-        const token = jwt.sign({ id: admin.id }, process.env.JWT_SECRET || "secretKey", {
-            expiresIn: "1h",
+        const token = jwt.sign({ id: admin.id, email: admin.email, name: admin.name }, process.env.JWT_SECRET || "secretKey", {
+            expiresIn: "1h", // Consider making this configurable or longer
         });
 
-        res.status(200).json({ token });
+        // Return admin details along with the token
+        res.status(200).json({
+            token,
+            admin: {
+                id: admin.id,
+                email: admin.email,
+                name: admin.name,
+            }
+        });
     } catch (error) {
         if (error instanceof z.ZodError) {
             res.status(400).json({
